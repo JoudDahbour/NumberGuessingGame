@@ -16,3 +16,14 @@ function getPlayerGuess() {
 
     return parseInt(guess);
 }
+
+function checkGuess(guess, correctNumber){
+    if (guess === correctNumber){
+        return "Correct!";
+    } else if (guess < correctNumber){
+        return "too low!";
+    } else {
+        return "too high!";
+    }
+    
+}
