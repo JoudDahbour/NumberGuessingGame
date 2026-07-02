@@ -3,13 +3,13 @@ function generateRandomNumber() {
 }
 
 function getPlayerGuess() {
-    let guess = prompt("Enter your guess (between 1 and 100):");
+    let guess = prompt("Enter your guess (a whole number between 1 and 100):");
 
-    while (guess === null || guess.trim() === "" || isNaN(guess) || guess < 1 || guess > 100) {
+    while (guess === null || guess.trim() === "" || isNaN(guess) || guess < 1 || guess > 100 || Number(guess) % 1 !== 0) {
         if (guess === null) {
-            guess = prompt("You can't escape, creator! Enter a number between 1 and 100:");
+            guess = prompt("You can't escape, creator! Enter a whole number between 1 and 100:");
         } else {
-            guess = prompt("'" + guess + "' is not valid! Enter a number between 1 and 100:");
+            guess = prompt("'" + guess + "' is not valid! Enter a whole number between 1 and 100:");
         }
            
     }
@@ -33,6 +33,7 @@ function game(){
     let attempts = 0;
     const maxAttempts = 10;
     let won = false;
+    let pastGuesses = [];
 
     console.log("Welcome to the Mind Reader Game!");
     console.log("A veild figure sits across from you, eyes closed...");
@@ -42,6 +43,13 @@ function game(){
 
     while (attempts < maxAttempts && won === false){
         const guess = getPlayerGuess();
+        
+        if (pastGuesses.includes(guess)){
+            console.log("[Mind Reader]: You have already used the number " + guess + ". Your visions are clouded. Try a different number.");
+            continue;
+        }
+
+        pastGuesses.push(guess);
         attempts++;
         const result = checkGuess(guess, correctNumber);
 
@@ -70,4 +78,23 @@ function game(){
     }
 }
 
-game();
+function startGame() {
+    let playAgain = true;
+
+    while (playAgain === true) {
+        game();
+        let answer = prompt("Do you want to play again? (yes/no)").toLowerCase();
+
+        while (answer === null || (answer.toLowerCase().trim() !== "yes" && answer.toLowerCase().trim() !== "no")) {
+            answer = prompt("Please answer 'yes' or 'no'. Do you want to play again?");
+        }
+
+        if (answer.toLowerCase().trim() === "no") {
+            playAgain = false;
+            console.log("[Mind Reader]: Thank you for playing! Farewell, until we meet again.");
+        }
+
+    }
+}
+
+startGame();
