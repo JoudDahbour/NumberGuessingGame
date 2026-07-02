@@ -36,7 +36,7 @@ function game(){
     let pastGuesses = [];
 
     console.log("Welcome to the Mind Reader Game!");
-    console.log("A veild figure sits across from you, eyes closed...");
+    console.log("A veiled figure sits across from you, eyes closed...");
     console.log("[Mind Reader]: I have sealed a number between 1 and 100 within my mind.");
     console.log("[Mind Reader]: Reach into my thoughts and guess the number I am thinking of... if you dare.");
     console.log("[Mind Reader]: You have " + maxAttempts + " visions to guess the number. Let us begin!");
@@ -83,7 +83,7 @@ function startGame() {
 
     while (playAgain === true) {
         game();
-        let answer = prompt("Do you want to play again? (yes/no)").toLowerCase();
+        let answer = prompt("Do you want to play again? (yes/no)")
 
         while (answer === null || (answer.toLowerCase().trim() !== "yes" && answer.toLowerCase().trim() !== "no")) {
             answer = prompt("Please answer 'yes' or 'no'. Do you want to play again?");
