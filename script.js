@@ -35,8 +35,8 @@ function game(){
     let won = false;
 
     console.log("Welcome to the Mind Reader Game!");
-    console.log("A weild figure sits across from you, eyes closed...");
-    console.log("[Mind Reader]: I have sealed a number between 1 and 200 within my mind.");
+    console.log("A veild figure sits across from you, eyes closed...");
+    console.log("[Mind Reader]: I have sealed a number between 1 and 100 within my mind.");
     console.log("[Mind Reader]: Reach into my thoughts and guess the number I am thinking of... if you dare.");
     console.log("[Mind Reader]: You have " + maxAttempts + " visions to guess the number. Let us begin!");
 
@@ -48,7 +48,7 @@ function game(){
         console.log("Vision " + attempts + " of " + maxAttempts);
         console.log("You sense the number: " + guess);
 
-        if (result === "correct"){
+        if (result === "Correct!"){
             won = true;
             console.log("[Mind Reader]: You...you saw it. You truly read my mind.");
         } else if (result === "too low!"){
